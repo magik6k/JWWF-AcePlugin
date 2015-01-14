@@ -381,9 +381,9 @@ public class AceEditor extends BasicInput {
 	
 	/**
 	 * Sets size of the editor
-	 * @param width
-	 * @param height
-	 * @return
+	 * @param width New width in pixels
+	 * @param height New height in pixels
+	 * @return This AceEditor
 	 */
 	public AceEditor setSize(int width, int height){
 		this.width = width;

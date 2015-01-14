@@ -16,7 +16,7 @@ public class AceClient extends User	{
 		TextLabel label = new TextLabel("works");
 		AceEditor editor = new AceEditor("//Hello there, wat you see here is ace.c9.io java editor inside JWWF!",
 				AceMode.JAVA, AceTheme.ECLIPSE);
-		TextLabel code = new TextLabel(editor.getText());
+		final TextLabel code = new TextLabel(editor.getText());
 		
 		editor.setTextHandler(new TextHandler() {
 			

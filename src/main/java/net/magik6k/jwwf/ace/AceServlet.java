@@ -18,9 +18,7 @@ public class AceServlet extends HttpServlet{
 			throws ServletException, IOException {
 		response.setContentType("text/javascript");
         response.setStatus(HttpServletResponse.SC_OK);
-        
-        System.out.println(request.getRequestURI().toString());
-        
+                
         response.getWriter().write(Resources.toString(Resources.getResource(new StringBuilder("net/magik6k/jwwf/ace/assets/editor")
         	.append(request.getRequestURI().replaceFirst("/ace", "")).toString()), Charsets.UTF_8));
         
