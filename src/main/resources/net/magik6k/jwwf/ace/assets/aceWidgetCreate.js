@@ -1,4 +1,4 @@
-var element = $('<div>').width(data.width).height(data.height).addClass('aceCointainer')
+var element = $('<div>').height(data.height).addClass('aceCointainer')
 var editorElement = $('<div>').html(data.text).addClass('aceeditor')
 element.html(editorElement)
 var editor = ace.edit(editorElement.get(0));

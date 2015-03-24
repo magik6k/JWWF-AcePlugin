@@ -6,17 +6,19 @@ import net.magik6k.jwwf.ace.AceTheme;
 import net.magik6k.jwwf.core.MainFrame;
 import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.handlers.TextHandler;
+import net.magik6k.jwwf.widgets.basic.PreformatedTextLabel;
 import net.magik6k.jwwf.widgets.basic.TextLabel;
-import net.magik6k.jwwf.widgets.basic.panel.VerticalPanel;
+import net.magik6k.jwwf.widgets.basic.panel.Panel;
+import net.magik6k.jwwf.widgets.basic.panel.Row;
 
 public class AceClient extends User	{
 
 	@Override
 	protected void initializeUser(MainFrame rootFrame) {
-		TextLabel label = new TextLabel("works");
-		AceEditor editor = new AceEditor("//Hello there, wat you see here is ace.c9.io java editor inside JWWF!",
+		TextLabel label = new TextLabel("<h1>Example Ace editor - jwwf-ace</h1>");
+		AceEditor editor = new AceEditor("//Hello there,\n//what you see here is ace.c9.io java editor inside JWWF!",
 				AceMode.JAVA, AceTheme.ECLIPSE);
-		final TextLabel code = new TextLabel(editor.getText());
+		final PreformatedTextLabel code = new PreformatedTextLabel(editor.getText());
 		
 		editor.setTextHandler(new TextHandler() {
 			
@@ -26,7 +28,8 @@ public class AceClient extends User	{
 			}
 		});
 		
-		rootFrame.put(new VerticalPanel(3, label, editor, code));
+		rootFrame.put(new Row(2, new Panel(label).setWidth(12),
+				new Panel(new Row(2, editor, code)).setWidth(12)));
 	}
 
 }

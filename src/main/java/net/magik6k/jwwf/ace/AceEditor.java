@@ -8,7 +8,6 @@ import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 
 public class AceEditor extends BasicInput {
 	private String text;
-	private int width = 800;
 	private int height = 600;
 	private TextHandler handler;
 	private AceMode mode = AceMode.TEXT;
@@ -54,13 +53,11 @@ public class AceEditor extends BasicInput {
 	/**
 	 * Creates new Ace Editor with default Text mode and Monokai theme
 	 * @param text Default text
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 */
-	public AceEditor(String text, int width, int height) {
+	public AceEditor(String text, int height) {
 		super(Actions.TEXT_INPUT);
 		this.text = text;
-		this.width = width;
 		this.height = height;
 	}
 	
@@ -68,27 +65,23 @@ public class AceEditor extends BasicInput {
 	 * Creates new Ace Editor with default Text mode and Monokai theme
 	 * @param text Default text
 	 * @param handler Input handler
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 */
-	public AceEditor(String text, TextHandler handler, int width, int height) {
+	public AceEditor(String text, TextHandler handler, int height) {
 		super(Actions.TEXT_INPUT);
 		this.text = text;
 		this.handler = handler;
-		this.width = width;
 		this.height = height;
 	}
 	
 	/**
 	 * Creates new Ace Editor with default Text mode and Monokai theme
 	 * @param handler Input handler
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 */
-	public AceEditor(TextHandler handler, int width, int height) {
+	public AceEditor(TextHandler handler, int height) {
 		super(Actions.TEXT_INPUT);
 		this.handler = handler;
-		this.width = width;
 		this.height = height;
 	}
 	
@@ -139,14 +132,12 @@ public class AceEditor extends BasicInput {
 	/**
 	 * Creates new Ace Editor with Monokai theme
 	 * @param text Default text
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 * @param mode Ace editor mode
 	 */
-	public AceEditor(String text, int width, int height, AceMode mode) {
+	public AceEditor(String text, int height, AceMode mode) {
 		super(Actions.TEXT_INPUT);
 		this.text = text;
-		this.width = width;
 		this.height = height;
 		this.mode = mode;
 	}
@@ -155,15 +146,13 @@ public class AceEditor extends BasicInput {
 	 * Creates new Ace Editor with Monokai theme
 	 * @param text Default text
 	 * @param handler Input handler
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 * @param mode Ace editor mode
 	 */
-	public AceEditor(String text, TextHandler handler, int width, int height, AceMode mode) {
+	public AceEditor(String text, TextHandler handler, int height, AceMode mode) {
 		super(Actions.TEXT_INPUT);
 		this.text = text;
 		this.handler = handler;
-		this.width = width;
 		this.height = height;
 		this.mode = mode;
 	}
@@ -171,14 +160,12 @@ public class AceEditor extends BasicInput {
 	/**
 	 * Creates new Ace Editor with Monokai theme
 	 * @param handler Input handler
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 * @param mode Ace editor mode
 	 */
-	public AceEditor(TextHandler handler, int width, int height, AceMode mode) {
+	public AceEditor(TextHandler handler, int height, AceMode mode) {
 		super(Actions.TEXT_INPUT);
 		this.handler = handler;
-		this.width = width;
 		this.height = height;
 		this.mode = mode;
 	}
@@ -230,14 +217,12 @@ public class AceEditor extends BasicInput {
 	/**
 	 * Creates new Ace Editor with default Text mode
 	 * @param text Default text
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 * @param theme Ace editor theme
 	 */
-	public AceEditor(String text, int width, int height, AceTheme theme) {
+	public AceEditor(String text, int height, AceTheme theme) {
 		super(Actions.TEXT_INPUT);
 		this.text = text;
-		this.width = width;
 		this.height = height;
 		this.theme = theme;
 	}
@@ -246,15 +231,13 @@ public class AceEditor extends BasicInput {
 	 * Creates new Ace Editor with default Text mode
 	 * @param text Default text
 	 * @param handler Input handler
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 * @param theme Ace editor theme
 	 */
-	public AceEditor(String text, TextHandler handler, int width, int height, AceTheme theme) {
+	public AceEditor(String text, TextHandler handler, int height, AceTheme theme) {
 		super(Actions.TEXT_INPUT);
 		this.text = text;
 		this.handler = handler;
-		this.width = width;
 		this.height = height;
 		this.theme = theme;
 	}
@@ -262,14 +245,12 @@ public class AceEditor extends BasicInput {
 	/**
 	 * Creates new Ace Editor with default Text mode
 	 * @param handler Input handler
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 * @param theme Ace editor theme
 	 */
-	public AceEditor(TextHandler handler, int width, int height, AceTheme theme) {
+	public AceEditor(TextHandler handler, int height, AceTheme theme) {
 		super(Actions.TEXT_INPUT);
 		this.handler = handler;
-		this.width = width;
 		this.height = height;
 		this.theme = theme;
 	}
@@ -329,15 +310,13 @@ public class AceEditor extends BasicInput {
 	/**
 	 * Creates new Ace Editor
 	 * @param text Default text
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 * @param mode Ace editor mode
 	 * @param theme Ace editor theme
 	 */
-	public AceEditor(String text, int width, int height, AceMode mode, AceTheme theme) {
+	public AceEditor(String text, int height, AceMode mode, AceTheme theme) {
 		super(Actions.TEXT_INPUT);
 		this.text = text;
-		this.width = width;
 		this.height = height;
 		this.mode = mode;
 		this.theme = theme;
@@ -347,16 +326,14 @@ public class AceEditor extends BasicInput {
 	 * Creates new Ace Editor
 	 * @param text Default text
 	 * @param handler Input handler
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 * @param mode Ace editor mode
 	 * @param theme Ace editor theme
 	 */
-	public AceEditor(String text, TextHandler handler, int width, int height, AceMode mode, AceTheme theme) {
+	public AceEditor(String text, TextHandler handler, int height, AceMode mode, AceTheme theme) {
 		super(Actions.TEXT_INPUT);
 		this.text = text;
 		this.handler = handler;
-		this.width = width;
 		this.height = height;
 		this.mode = mode;
 		this.theme = theme;
@@ -365,15 +342,13 @@ public class AceEditor extends BasicInput {
 	/**
 	 * Creates new Ace Editor
 	 * @param handler Input handler
-	 * @param width Width in pixels
 	 * @param height Height in pixels
 	 * @param mode Ace editor mode
 	 * @param theme Ace editor theme
 	 */
-	public AceEditor(TextHandler handler, int width, int height, AceMode mode, AceTheme theme) {
+	public AceEditor(TextHandler handler, int height, AceMode mode, AceTheme theme) {
 		super(Actions.TEXT_INPUT);
 		this.handler = handler;
-		this.width = width;
 		this.height = height;
 		this.mode = mode;
 		this.theme = theme;
@@ -381,12 +356,10 @@ public class AceEditor extends BasicInput {
 	
 	/**
 	 * Sets size of the editor
-	 * @param width New width in pixels
 	 * @param height New height in pixels
 	 * @return This AceEditor
 	 */
-	public AceEditor setSize(int width, int height){
-		this.width = width;
+	public AceEditor setSize(int height){
 		this.height = height;
 		this.sendElement();
 		return this;
@@ -429,7 +402,7 @@ public class AceEditor extends BasicInput {
 
 	@Override
 	public String getData() {
-		return "{\"width\":"+String.valueOf(width)+",\"height\":"+String.valueOf(height)
+		return "{\"height\":"+String.valueOf(height)
 				+",\"theme\":\""+theme.theme
 				+"\", \"mode\": \""+mode.mode
 				+"\""+(sendTextUpdate ? (",\"text\":"+Json.escapeString(text)): "" )+"}";
@@ -437,6 +410,7 @@ public class AceEditor extends BasicInput {
 	
 	/**
 	 * Internal use only
+	 * @param data Data
 	 */
 	public void handleData(String data){
 		if(data == null)return;
