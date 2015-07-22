@@ -1,0 +1,140 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'signing'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+group = "net.magik6k.jwwf"
+archivesBaseName = "jwwf-ace"
+version = "1.2.0"
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+    	classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.0'
+  	}
+}
+
+sourceSets {
+    main {
+    	resources{
+    		srcDir 'resources'
+    	}
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+	testCompile group: 'junit', name: 'junit', version: '4.0'
+	compile 'net.magik6k.jwwf:jwwf:0.3.0-beta-3'
+}
+
+compileJava {
+	options.fork = true
+	sourceCompatibility = "1.7"
+	targetCompatibility = "1.7"
+}
+
+javadoc {
+	include 'net/magik6k/jwwf/ace/**'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+	from 'build/docs/javadoc'
+	classifier 'javadoc'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+task writeNewPom << {
+    pom {
+        project {
+            licenses {
+                license {
+                    name 'The MIT License'
+                    url 'http://opensource.org/licenses/MIT'
+                    distribution 'repo'
+                }
+            }
+        }
+    }.writeTo("$buildDir/libs/pom.xml")
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.allTasks.any { it instanceof Sign }) {
+        // Use Java 6's console to read from the console (no good for
+        // a CI environment)
+        Console console = System.console()
+        console.printf "\n\nWe have to sign some things in this build." +
+                       "\n\nPlease enter your signing details.\n\n"
+
+        def password = console.readPassword("PGP Private Key Password: ")
+        allprojects { ext."signing.password" = password }
+
+        console.printf "\nThanks.\n\n"
+    }
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      pom.project {
+        name 'The Ace editor for JWWF'
+        packaging 'jar'
+        description 'Ajax.org Ace editor plugin for JWWF'
+        url 'https://github.com/magik6k/JWWF-AcePlugin'
+
+        scm {
+          connection 'scm:git:https://github.com/magik6k/JWWF-AcePlugin.git'
+          developerConnection 'scm:git:https://github.com/magik6k/JWWF-AcePlugin.git'
+          url 'https://github.com/magik6k/JWWF-AcePlugin'
+        }
+
+        licenses {
+            license {
+                name 'The MIT License'
+                url 'http://opensource.org/licenses/MIT'
+                distribution 'repo'
+            }
+        }
+
+        developers {
+          developer {
+            id 'Magik6k'
+            email 'me@magik6k.net'
+          }
+        }
+      }
+    }
+  }
+}
+
+
